@@ -14,3 +14,7 @@ body {
     flex-direction: row;
     gap: .9375rem;
 }
+
+footer{
+bottom: 0;
+}
