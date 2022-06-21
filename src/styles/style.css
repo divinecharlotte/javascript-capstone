@@ -1,20 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --text-color-1: #f0f9cf;
+  --text-color-2: #23832b;
+  --text-color-3: #9cb445;
+  --bg-color: #f0f9cf;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-    background-color: aquamarine;
+  background-color: var(--bg-color);
 }
 
-.navs {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .625rem 4.375rem;
+nav .openMenu {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.5rem;
+  margin: 20px;
+  cursor: pointer;
+  color: #236128;
 }
 
-.nav-list {
+nav .nav-items {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  background: rgba(235, 255, 161, 0.9);
+}
+
+nav .closeMenu {
+  font-size: 1.7rem;
+}
+
+nav .nav-items .closeMenu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.item a {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-link {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  margin: 0 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: rgb(49, 49, 49);
+  font-weight: 500;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 7px;
+  border-radius: 5px;
+  background-color: var(--text-color-3);
+  bottom: -10px;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--text-color-2);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.tagline h2 {
+  text-align: center;
+  color: var(--text-color-2);
+  font-size: 2.5rem;
+  margin-top: 5%;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-family: "Courgette", cursive;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: auto;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow:
+    rgb(50 50 93 / 25%) 0 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0 3px 7px -3px;
+}
+
+.card-img img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 100%;
+}
+
+.card-info h2 {
+  font-family: "Patrick Hand", cursive;
+  color: var(--text-color-3);
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.card-info ul {
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-between;
+  list-style: none;
+}
+
+
+
+
+.comment-btn {
+  padding: 5% 15%;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.3rem;
+  color: var(--text-color-1);
+  background-color: var(--text-color-2);
+  border-radius: 15px;
+  border: 1px solid var(--text-color-2);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.comment-btn:hover {
+  background-color: #236128;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  color: var(--text-color-3);
+  font-size: 1.7rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.like-btn .fa-heart {
+  margin-right: 0.75rem;
+}
+
+.comments-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+
+
+.hidden {
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: #c8e073;
+  padding: 20px;
+}
+
+.footer a {
+  color: #2a7703;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer a:hover {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transform: scale(1.2, 1.2);
+}
+
+@media screen and (min-width: 768px) {
+  nav .openMenu {
+    display: none;
+  }
+
+  nav .nav-items .closeMenu {
+    display: none;
+    cursor: pointer;
+  }
+
+  nav .nav-items {
     display: flex;
     flex-direction: row;
-    gap: .9375rem;
-}
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
+    padding: 2%;
+    background-color: #fff;
+    margin: auto;
+  }
 
-footer{
-bottom: 0;
+  .item a {
+    font-size: 1rem;
+  }
+
+  .tagline h2 {
+    font-size: 3.5rem;
+  }
+
+
+  footer {
+    font-size: 1.2rem;
+  }
+
 }

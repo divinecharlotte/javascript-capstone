@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Wbpack Exercise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>vegie meals house</title>
+   
 </head>
+
 <body>
-    <header class="header">
-        <nav class="navbar navs navbar-light bg-light justify-content-between">
-            <a class="navbar-brand">Restaurant</a>
-            <div class="navbar-nav nav-list">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">About us</a>
-                <a class="nav-item nav-link" href="#">Contact</a>
-              </div>
-          </nav>
-      </header>
-      <footer>
-        <hr>
-        created by <span><a href="https://github.com/divinecharlotte">DIVINE CHARLOTTE</a></span>
+    <header>
+        <nav>
+            <div class="openMenu"><i class="fa-solid fa-bars"></i></div>
+            <ul class="nav-items">
+                <li class="item"><a class="nav-link" href="./index.html">Home</a></li>
+                <li class="item"><a class="nav-link item-count" href="#recipe-section" id="recipesSection">Recipes</a></li>
+                <li class="item"><a class="nav-link" href="#contact" id="contactSection">Contact</a></li>
+                <li class="closeMenu"><i class="fa-solid fa-xmark"></i></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="tagline">
+                <h2>Get the best meals</h2>
+            </div>
+            <div id="recipe-section" class="recipe-cards"></div>
+        </section>
+        <section class="popup-container hidden">
+            <div class="popup-window">
+                <div class="close-btn">
+                    <i id="close" class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="popup-image">
+                    <img src="." alt="popup-image">
+                </div>
+                <div class="item-info">
+                    <h3 class="dish-name"></h3>
+                    <p class="recipe"></p>
+                </div>
+                <div class="comments-container">
+                    <h4></h4>
+                    <div class="comment-content">
+                        <ul class="comments-generator"></ul>
+                    </div>
+                    <span id="comments-spinner" class="spinner"></span>
+                </div>
+                <div class="add-comment">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+      <p>Created by Charlotte Divine &  Yohannes under CC lisence</p>
     </footer>
-  <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>  
-</body>
+  </body>
 </html>
+
+
+
+

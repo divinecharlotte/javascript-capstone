@@ -22,7 +22,11 @@
   },
   "homepage": "https://github.com/divinecharlotte/javascript-capstone#readme",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.26.0",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.73.0",
