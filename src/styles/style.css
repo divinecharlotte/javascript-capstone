@@ -1,0 +1,16 @@
+body {
+    background-color: aquamarine;
+}
+
+.navs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .625rem 4.375rem;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    gap: .9375rem;
+}
