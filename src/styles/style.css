@@ -128,7 +128,8 @@ nav .nav-items .closeMenu {
   border: 1px solid #fff;
   border-radius: 25px;
   background: #fff;
-  box-shadow: rgb(50 50 93 / 25%) 0 6px 12px -2px,
+  box-shadow:
+    rgb(50 50 93 / 25%) 0 6px 12px -2px,
     rgb(0 0 0 / 30%) 0 3px 7px -3px;
 }
 

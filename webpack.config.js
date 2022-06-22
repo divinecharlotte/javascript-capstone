@@ -8,7 +8,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        title: 'Development',
+      title: 'Development',
       template: './src/index.html',
     }),
   ],
@@ -27,9 +27,6 @@ module.exports = {
   },
   devServer: {
     static: './dist',
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
   optimization: {
     runtimeChunk: 'single',
