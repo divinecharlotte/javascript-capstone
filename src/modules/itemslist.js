@@ -5,7 +5,7 @@ const recipeCards = document.querySelector('.recipe-cards');
 const recipeCount = document.querySelector('.item-count');
 const displayCards = async () => {
   const response = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/filter.php?c=seafood',
+    'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegetarian',
   );
   const data = await response.json();
 
