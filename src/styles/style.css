@@ -128,8 +128,7 @@ nav .nav-items .closeMenu {
   border: 1px solid #fff;
   border-radius: 25px;
   background: #fff;
-  box-shadow:
-    rgb(50 50 93 / 25%) 0 6px 12px -2px,
+  box-shadow: rgb(50 50 93 / 25%) 0 6px 12px -2px,
     rgb(0 0 0 / 30%) 0 3px 7px -3px;
 }
 
@@ -158,9 +157,6 @@ nav .nav-items .closeMenu {
   justify-content: space-between;
   list-style: none;
 }
-
-
-
 
 .comment-btn {
   padding: 5% 15%;
@@ -196,8 +192,7 @@ nav .nav-items .closeMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-} 
-
+}
 
 .hidden {
   display: none;
@@ -257,9 +252,7 @@ nav .nav-items .closeMenu {
     font-size: 3.5rem;
   }
 
-
   footer {
     font-size: 1.2rem;
   }
-
 }

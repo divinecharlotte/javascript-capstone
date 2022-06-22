@@ -1,21 +1,22 @@
-
-const recipeCount = document.querySelector('.item-count');
-const recipeCards = document.querySelector('.recipe-cards');
+const recipeCount = document.querySelector(".item-count");
+const recipeCards = document.querySelector(".recipe-cards");
 
 const displayCards = async () => {
- const response = await fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian');
- const data = await response.json();
-     
-      for(let i = 0;i<20;i++) {
-        data.meals[i].idMeal = i;
-      }
-      console.log(data);
-      const file = data.meals;
-      const newArray = file.filter((Objects) =>  Objects.idMeal <= 11);
-      console.log(newArray);
-      let html = '';
-      newArray.forEach((meal) => {
-        html += `<div class="card" id="${meal.idMeal}">
+  const response = await fetch(
+    "https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian"
+  );
+  const data = await response.json();
+
+  for (let i = 0; i < 20; i++) {
+    data.meals[i].idMeal = i;
+  }
+  console.log(data);
+  const file = data.meals;
+  const newArray = file.filter((Objects) => Objects.idMeal <= 11);
+  console.log(newArray);
+  let html = "";
+  newArray.forEach((meal) => {
+    html += `<div class="card" id="${meal.idMeal}">
                <div class="card-img">
                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
                </div>
@@ -27,8 +28,8 @@ const displayCards = async () => {
                    </ul>
                </div>
              </div>`;
-        recipeCards.innerHTML = html;
-      });
-  };
+    recipeCards.innerHTML = html;
+  });
+};
 
 export default displayCards;
