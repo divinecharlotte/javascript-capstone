@@ -25,8 +25,12 @@ module.exports = {
       },
     ],
   },
+  devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    watchFiles: {
+      paths: ['./src/**/*'],
+    },
   },
   optimization: {
     runtimeChunk: 'single',

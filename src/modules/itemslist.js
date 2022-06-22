@@ -1,5 +1,9 @@
 import { getLikes, likeInteraction } from './nOfLikes.js';
 import itemsCounter from './itemsCounter.js';
+import Reservations from './Reservations.js';
+
+const recipeCards = document.querySelector('.recipe-cards');
+const reservationBtn = new Reservations();
 
 const recipeCards = document.querySelector('.recipe-cards');
 const recipeCount = document.querySelector('.item-count');
@@ -30,6 +34,9 @@ const displayCards = async () => {
                    <ul>
                    <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
                    </ul>
+                   <ul>
+                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
+                   </ul>
                </div>
              </div>`;
     recipeCards.innerHTML = html;
@@ -37,6 +44,7 @@ const displayCards = async () => {
   getLikes();
   likeInteraction();
   itemsCounter(newArray.length, recipeCount);
+  reservationBtn.init();
 };
 
 export default displayCards;
