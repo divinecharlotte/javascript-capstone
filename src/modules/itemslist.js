@@ -4,8 +4,6 @@ import Reservations from './Reservations.js';
 
 const recipeCards = document.querySelector('.recipe-cards');
 const reservationBtn = new Reservations();
-
-const recipeCards = document.querySelector('.recipe-cards');
 const recipeCount = document.querySelector('.item-count');
 const displayCards = async () => {
   const response = await fetch(
