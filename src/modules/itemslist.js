@@ -1,11 +1,13 @@
+import { getLikes, likeInteraction } from './nOfLikes.js';
+import itemsCounter from './itemsCounter.js';
 import Reservations from './Reservations.js';
 
 const recipeCards = document.querySelector('.recipe-cards');
 const reservationBtn = new Reservations();
-
+const recipeCount = document.querySelector('.item-count');
 const displayCards = async () => {
   const response = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian',
+    'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegetarian',
   );
   const data = await response.json();
 
@@ -25,6 +27,10 @@ const displayCards = async () => {
                    <ul>
                        <li><button id=${meal.idMeal}  class='comment-btn' type='button'>Comments</button></li>
                        <li><button class='like-btn'><i class='fa-regular fa-heart'></i><span class='like-count'>0</span></button></li>
+                     
+                   </ul>
+                   <ul>
+                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
                    </ul>
                    <ul>
                    <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
@@ -33,6 +39,9 @@ const displayCards = async () => {
              </div>`;
     recipeCards.innerHTML = html;
   });
+  getLikes();
+  likeInteraction();
+  itemsCounter(newArray.length, recipeCount);
   reservationBtn.init();
 };
 
