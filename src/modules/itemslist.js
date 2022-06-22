@@ -1,4 +1,7 @@
+import Reservations from './Reservations.js';
+
 const recipeCards = document.querySelector('.recipe-cards');
+const reservationBtn = new Reservations();
 
 const displayCards = async () => {
   const response = await fetch(
@@ -23,10 +26,14 @@ const displayCards = async () => {
                        <li><button id=${meal.idMeal}  class='comment-btn' type='button'>Comments</button></li>
                        <li><button class='like-btn'><i class='fa-regular fa-heart'></i><span class='like-count'>0</span></button></li>
                    </ul>
+                   <ul>
+                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
+                   </ul>
                </div>
              </div>`;
     recipeCards.innerHTML = html;
   });
+  reservationBtn.init();
 };
 
 export default displayCards;
