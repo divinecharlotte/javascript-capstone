@@ -159,7 +159,6 @@ nav .nav-items .closeMenu {
   list-style: none;
 }
 
-.reservation-btn,
 .comment-btn {
   padding: 3% 7%;
   font-family: "Patrick Hand", cursive;
@@ -172,7 +171,6 @@ nav .nav-items .closeMenu {
   transition: 0.3s;
 }
 
-.reservation-btn:hover,
 .comment-btn:hover {
   background-color: #236128;
 }

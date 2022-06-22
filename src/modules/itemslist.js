@@ -5,7 +5,7 @@ const recipeCards = document.querySelector('.recipe-cards');
 const recipeCount = document.querySelector('.item-count');
 const displayCards = async () => {
   const response = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/filter.php?c=Vegetarian',
+    'https://www.themealdb.com/api/json/v1/1/filter.php?c=seafood',
   );
   const data = await response.json();
 
@@ -25,7 +25,10 @@ const displayCards = async () => {
                    <ul>
                        <li><button id=${meal.idMeal}  class='comment-btn' type='button'>Comments</button></li>
                        <li><button class='like-btn'><i class='fa-regular fa-heart'></i><span class='like-count'>0</span></button></li>
-                       <li><button id=${meal.idMeal}  class='reservation-btn' type='button'>reservation</button></li>
+                     
+                   </ul>
+                   <ul>
+                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
                    </ul>
                </div>
              </div>`;
