@@ -257,3 +257,55 @@ nav .nav-items .closeMenu {
     font-size: 1.2rem;
   }
 }
+
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bring {
+  display: block;
+}
+
+.comment-pop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: rgb(217, 213, 213);
+  width: 700px;
+  gap: 0.3125rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin-bottom: 2.5rem;
+}
+
+.x {
+  margin-left: 90%;
+  width: 30px;
+  margin-top: 6%;
+  background-color: red;
+}
+
+.comments {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.coImage {
+  height: 350px;
+  width: 25rem;
+  margin-top: 1.875rem;
+}
