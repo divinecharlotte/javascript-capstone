@@ -1,4 +1,10 @@
+import AddShowReservations from "./AddShowReservations.js";
 class Reservations {
+
+  constructor() {
+    this.AddShowRes = new AddShowReservations();
+  }
+
   async apidata(dishName) {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${dishName}`);
 
@@ -35,7 +41,8 @@ class Reservations {
 
     const popup = document.getElementById('reservation__data-content');
     this.removePopup();
-    popup.insertAdjacentHTML('afterbegin', `
+
+    let html = `
     <img src='${thumb}' alt="Image of ${name}">
     <h2>${name}</h2>
     <div id='resPopup--dish-description'>
@@ -52,7 +59,9 @@ class Reservations {
         <i class="fa-solid fa-arrow-up-right-from-square"></i>
       </div>
     </div>
-    `);
+    `;
+    html += this.AddShowRes.renderForm();
+    popup.insertAdjacentHTML('afterbegin', html);
   }
 
   openPopup = (e) => {
