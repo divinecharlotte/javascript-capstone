@@ -33,6 +33,7 @@ class Reservations {
 
   renderPopup(data) {
     const res = data.meals[0];
+
     const thumb = res.strMealThumb;
     const name = res.strMeal;
     const category = res.strCategory;
@@ -61,7 +62,17 @@ class Reservations {
     </div>
     `;
     html += this.AddShowRes.renderForm();
+    this.AddShowRes.getReservations(area);
     popup.insertAdjacentHTML('afterbegin', html);
+
+    const form = document.getElementById('submit-reservation');
+    console.log(form);
+    form.addEventListener('submit', (e) => {
+      const formData = new FormData(e.target);
+      e.preventDefault();
+      // console.log(formData.get('name'));
+      this.AddShowRes.submitForm(formData, e.target, area);
+    });
   }
 
   openPopup = (e) => {
@@ -90,6 +101,8 @@ class Reservations {
     reservationBtn.forEach((el) => {
       el.addEventListener('click', this.openPopup);
     });
+
+    reservationBtn[0].click();
   };
 }
 
