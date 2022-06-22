@@ -1,5 +1,6 @@
 import { getLikes, likeInteraction } from './nOfLikes.js';
-import itemsCounter from './itemsCounter.js'
+import itemsCounter from './itemsCounter.js';
+
 const recipeCards = document.querySelector('.recipe-cards');
 const recipeCount = document.querySelector('.item-count');
 const displayCards = async () => {
@@ -32,7 +33,7 @@ const displayCards = async () => {
   });
   getLikes();
   likeInteraction();
-   itemsCounter(newArray.length, recipeCount);
+  itemsCounter(newArray.length, recipeCount);
 };
 
 export default displayCards;
