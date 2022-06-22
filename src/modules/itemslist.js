@@ -32,9 +32,7 @@ const displayCards = async () => {
                    <ul>
                    <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
                    </ul>
-                   <ul>
-                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
-                   </ul>
+                  
                </div>
              </div>`;
     recipeCards.innerHTML = html;
