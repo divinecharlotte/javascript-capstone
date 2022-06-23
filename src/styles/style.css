@@ -5,6 +5,7 @@
   --text-color-2: #23832b;
   --text-color-3: #9cb445;
   --bg-color: #f0f9cf;
+  --popup-blur: 20px;
 }
 
 * {
@@ -124,7 +125,7 @@ nav .nav-items .closeMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 0.5rem;
+  padding: 1rem 1rem;
   border: 1px solid #fff;
   border-radius: 25px;
   background: #fff;
@@ -145,7 +146,8 @@ nav .nav-items .closeMenu {
   width: 100%;
 }
 
-.card-info h2 {
+.card-info h2,
+#reservationPopup h2 {
   font-family: "Patrick Hand", cursive;
   color: var(--text-color-3);
   font-size: 2rem;
@@ -160,7 +162,7 @@ nav .nav-items .closeMenu {
 }
 
 .comment-btn {
-  padding: 5% 15%;
+  padding: 3% 7%;
   font-family: "Patrick Hand", cursive;
   font-size: 1.3rem;
   color: var(--text-color-1);
@@ -222,6 +224,112 @@ nav .nav-items .closeMenu {
   transform: scale(1.2, 1.2);
 }
 
+body.popup-open {
+  overflow: hidden;
+  z-index: 95;
+}
+
+#blur-bg {
+  z-index: 99;
+}
+
+#reservationPopup {
+  --nav-line-height: 3px;
+  --nav-line-color: rgb(88, 88, 88);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  overflow: auto;
+  height: 100%;
+}
+
+#reservation__container {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow:
+    rgb(50 50 93 / 25%) 0 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0 3px 7px -3px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#reservation__closeBtn {
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 43px;
+}
+
+#r__cBtn-lines {
+  position: absolute;
+  top: 12px;
+  width: 80%;
+  height: var(--nav-line-height);
+  background-color: var(--nav-line-color);
+  transform: rotate(45deg);
+}
+
+#r__cBtn-lines::after {
+  content: "";
+  top: 0;
+  transform: rotate(-90deg);
+  position: absolute;
+  width: 100%;
+  height: var(--nav-line-height);
+  background-color: var(--nav-line-color);
+}
+
+#reservation__data-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#reservation__data-content img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+#reservation__data-content h2 {
+  margin-bottom: 10px;
+}
+
+#reservation-p__container {
+  max-width: 90vw;
+
+  /* stylelint-disable-next-line */
+  height: fit-content;
+
+  /* stylelint-disable-next-line */
+  height: -moz-fit-content;
+}
+
+#resPopup--dish-description {
+  display: flex;
+  flex-direction: column;
+}
+
+#resPopup--dish-description .rpdd-item p:first-child {
+  font-weight: bold;
+}
+
+#resPopup--dish-description .rpdd-item {
+  margin-bottom: 1rem;
+}
+
+#resPopup--dish-description a {
+  text-decoration: none;
+  color: var(--text-color-2);
+}
+
 @media screen and (min-width: 768px) {
   nav .openMenu {
     display: none;
@@ -255,6 +363,35 @@ nav .nav-items .closeMenu {
 
   footer {
     font-size: 1.2rem;
+  }
+
+  #reservation-p__container {
+    max-width: 50vw;
+  }
+
+  #resPopup--dish-description {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #resPopup--dish-description .rpdd-item {
+    margin: 0 1rem;
+    position: relative;
+  }
+
+  #resPopup--dish-description .rpdd-item::after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    top: 0;
+    right: 0;
+    margin-right: -1rem;
+  }
+
+  #resPopup--dish-description .rpdd-item:last-of-type::after {
+    content: "";
+    border-right: 0;
   }
 }
 
