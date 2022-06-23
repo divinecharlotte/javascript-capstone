@@ -419,7 +419,7 @@ body.popup-open {
   transform: translate(-50%, -50%);
   z-index: 10;
   background-color: rgb(217, 213, 213);
-  width: 700px;
+  width: 50%;
   gap: 0.75rem;
 }
 
@@ -446,4 +446,5 @@ form {
   height: 350px;
   width: 25rem;
   margin-top: 1.875rem;
+  border-radius: 5%;
 }
