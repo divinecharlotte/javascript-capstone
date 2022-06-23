@@ -8,7 +8,8 @@
     "build": "webpack",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test-res": "jest reservationsCounter.test.js --watch"
   },
   "repository": {
     "type": "git",
