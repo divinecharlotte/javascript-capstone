@@ -31,14 +31,12 @@ describe('add remove functionality', () => {
       ]),
     }));
     commentCounter.melsname = document.getElementById('reservations-counter');
-    // console.log(document.querySelector('.comment-pop').textContent);
     commentCounter.counternum = 'test';
   });
 
   describe('Check counter function', () => {
     it('Count fetch response', async () => {
       const count = await commentCounter('test');
-      console.log(count);
       expect(count).toHaveLength(3);
     });
   });
