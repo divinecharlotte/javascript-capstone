@@ -1,4 +1,4 @@
-import FormValidation from "./FormValidation.js";
+import FormValidation from './FormValidation.js';
 
 class AddShowReservations {
   link = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NeJSPpMrADKWN3Hg0NY2/reservations';
@@ -7,19 +7,7 @@ class AddShowReservations {
     this.validator = new FormValidation();
   }
 
-  async apidata(dishName) {
-    const response = await fetch(`${this.link}`);
-
-    try {
-      const data = await response.json();
-      this.renderPopup(data);
-    } catch (e) {
-      console.error(`Error: ${e}`);
-    }
-  }
-
-  renderForm = () => {
-    return `<form id='submit-reservation'>
+  renderForm = () => `<form id='submit-reservation'>
       <h3>Add a reservation</h3>
       <div class="resPopupFormItem">
         <input type='text' name="name" placeholder='Your name'>
@@ -39,7 +27,6 @@ class AddShowReservations {
     <div id='reservations-list'>
       </div>
     `;
-  };
 
   renderReservations = (data) => {
     const list = document.getElementById('reservations-list');
@@ -51,12 +38,9 @@ class AddShowReservations {
       <div class="reservation-list-item">
         <strong>${el.date_start}</strong> - <strong>${el.date_end}</strong> by <strong>${el.username}</strong>
       </div>
-        `
-
-        ;
+        `;
     });
     list.insertAdjacentHTML('afterbegin', html);
-
   };
 
   async reservationsCounter(id) {
@@ -69,10 +53,9 @@ class AddShowReservations {
       } else {
         const data = await response.json();
         counter.textContent = `(${data.length})`;
-
       }
     } catch (e) {
-      console.error(`Error: ${e}`);
+      throw Error(e);
     }
   }
 
@@ -85,13 +68,11 @@ class AddShowReservations {
         const data = await response.json();
         this.renderReservations(data);
         this.reservationsCounter(id);
-
       }
     } catch (e) {
-      console.error(`Error: ${e}`);
+      throw Error(e);
     }
   }
-
 
   invalidFormData = (form) => {
     form.insertAdjacentHTML('afterend', `
@@ -99,13 +80,14 @@ class AddShowReservations {
       `);
   };
 
-  async sendData({ id, name, start, end }) {
-
+  async sendData({
+    id, name, start, end,
+  }) {
     const dataJson = {
-      "item_id": id,
-      "username": name,
-      "date_start": start,
-      "date_end": end
+      item_id: id,
+      username: name,
+      date_start: start,
+      date_end: end,
     };
 
     try {
@@ -113,32 +95,27 @@ class AddShowReservations {
         method: 'POST',
         body: JSON.stringify(dataJson),
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       if (response.status === 201) {
-        console.log('Good response!');
         this.renderReservations([dataJson]);
         this.reservationsCounter(id);
-      } else {
-        throw Error('BAD!');
       }
-
     } catch (e) {
-      console.error(`Error: ${e}`);
+      throw Error(e);
     }
   }
 
   submitForm(data, formElement, id) {
-    // console.log(data);
     const name = data.get('name');
     const start = data.get('res-popup-start-date');
     const end = data.get('res-popup-end-date');
 
-    if (!this.validator.validateText(name) ||
-      !this.validator.validateDate(start) ||
-      !this.validator.validateDate(end)) {
+    if (!this.validator.validateText(name)
+      || !this.validator.validateDate(start)
+      || !this.validator.validateDate(end)) {
       this.invalidFormData(formElement);
       return false;
     }
@@ -148,10 +125,11 @@ class AddShowReservations {
       formErr.remove();
     }
 
-    this.sendData({ id, name, start, end });
+    this.sendData({
+      id, name, start, end,
+    });
 
-
-
+    return 1;
   }
 }
 

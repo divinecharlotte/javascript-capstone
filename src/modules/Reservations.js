@@ -1,6 +1,6 @@
-import AddShowReservations from "./AddShowReservations.js";
-class Reservations {
+import AddShowReservations from './AddShowReservations.js';
 
+class Reservations {
   constructor() {
     this.AddShowRes = new AddShowReservations();
   }
@@ -67,11 +67,9 @@ class Reservations {
     popup.insertAdjacentHTML('afterbegin', html);
 
     const form = document.getElementById('submit-reservation');
-    console.log(form);
     form.addEventListener('submit', (e) => {
       const formData = new FormData(e.target);
       e.preventDefault();
-      // console.log(formData.get('name'));
       this.AddShowRes.submitForm(formData, e.target, id);
     });
   }
@@ -102,8 +100,6 @@ class Reservations {
     reservationBtn.forEach((el) => {
       el.addEventListener('click', this.openPopup);
     });
-
-    reservationBtn[0].click();
   };
 }
 
