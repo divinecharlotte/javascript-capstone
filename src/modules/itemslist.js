@@ -2,6 +2,7 @@ import { doet } from './comment.js';
 import { getLikes, likeInteraction } from './nOfLikes.js';
 import itemsCounter from './itemsCounter.js';
 import Reservations from './Reservations.js';
+import commentCounter from './commentCounter.js';
 
 const recipeCards = document.querySelector('.recipe-cards');
 const reservationBtn = new Reservations();
@@ -38,10 +39,11 @@ const displayCards = async () => {
              </div>`;
     recipeCards.innerHTML = html;
   });
-  recipeCards.addEventListener('click', (e) => {
+  recipeCards.addEventListener('click', async (e) => {
     if (e.target.classList.contains('comment-btn')) {
       const b = e.target.id;
-      doet(b);
+      await doet(b);
+      commentCounter(b);
     }
   });
   getLikes();

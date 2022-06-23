@@ -455,7 +455,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  margin-bottom: 2.5rem;
 }
 
 .x {

@@ -1,7 +1,7 @@
 const apicom = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NeJSPpMrADKWN3Hg0NY2/comments';
 const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=vegetarian';
-const doet = async (b) => {
-  await fetch(`${apicom}?item_id=item${b}`)
+const doet = (b) => {
+  fetch(`${apicom}?item_id=item${b}`)
     .then((res) => res.json())
     .then((data) => {
       const newData = data;
@@ -15,7 +15,7 @@ const doet = async (b) => {
            <p class='comment'>${user.comment}</p>
            </div>`)
         .join('');
-      const html2 = `<h3>Comments(${newData.length})</h3><form>
+      const html2 = `<form>
          <h3 class='form-title'>Add your comment</h3>
          <input type='text' name='username' class='name' required placeholder='Your name'>
          <textarea class='textarea' id='' cols='2' rows='4' placeholder='Your Comment'></textarea>
@@ -26,21 +26,20 @@ const doet = async (b) => {
       const footer = document.querySelector('footer');
       main.classList.add('blur');
       footer.classList.add('blur');
-
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
           const mealName = data.meals[b].strMeal;
           const imgUrl = data.meals[b].strMealThumb;
-          const img = `<button id= '${b}x' class='x'>X</button><img class = 'coImage' src='${imgUrl}' alt='Food'><h2>${mealName}</h2>`;
+          const img = `<button id= '${b}x' class='x'>X</button><img class = 'coImage' src='${imgUrl}' alt='Food'><h2 class= "mealnames">${mealName}</h2>`;
           comment.insertAdjacentHTML('afterbegin', img);
           const xb = document.querySelector('.x');
           xb.addEventListener('click', () => {
             window.location.reload();
           });
         });
-      comment.insertAdjacentHTML('afterbegin', html2);
       comment.insertAdjacentHTML('afterbegin', html);
+      comment.insertAdjacentHTML('afterbegin', html2);
       comment.style.disply = 'block';
       const submit = document.querySelector(`#submit${b}`);
       submit.addEventListener('click', (e) => {
@@ -53,24 +52,33 @@ const doet = async (b) => {
           comment: Comment.value,
         };
 
-        fetch(`${apicom}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(inputComment),
-        }).then((res) => {
-          console.log(res.json());
-        });
-        const comment = document.querySelector('.comments');
-        comment.insertAdjacentHTML(
-          'beforebegin',
-          `<div class='comments'>
+        if (Username.value === '' || Comment.value === '') {
+          alert('Add comment');
+        } else {
+          fetch(`${apicom}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(inputComment),
+          }).then((res) => {
+            console.log(res.json());
+          });
+          const comment = document.querySelector('.comments');
+          comment.insertAdjacentHTML(
+            'beforebegin',
+            `<div class='comments'>
         <p class='creation_date0'>2022-06-22</p>
         <p class='username'>${Username.value}</p>
         <p class='comment'>${Comment.value}</p>
         </div>`,
-        );
+          );
+          data.length += 1;
+          const mealnames = document.querySelector('.comment-length');
+          mealnames.innerHTML = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
+          Username.value = '';
+          Comment.value = '';
+        }
       });
     });
 };
