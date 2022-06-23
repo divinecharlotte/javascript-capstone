@@ -73,6 +73,7 @@ class Reservations {
 
       e.preventDefault();
       this.AddShowRes.submitForm(formData, e.target, id);
+      form.reset();
     });
   }
 
