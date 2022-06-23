@@ -276,13 +276,14 @@ nav .nav-items .closeMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 100%;
+  justify-items: center;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
   background-color: rgb(217, 213, 213);
   width: 700px;
-  gap: 0.3125rem;
+  gap: 0.75rem;
 }
 
 form {

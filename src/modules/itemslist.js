@@ -1,3 +1,5 @@
+import { doet } from './comment.js';
+
 const recipeCards = document.querySelector('.recipe-cards');
 
 const displayCards = async () => {
@@ -26,6 +28,12 @@ const displayCards = async () => {
                </div>
              </div>`;
     recipeCards.innerHTML = html;
+  });
+  recipeCards.addEventListener('click', (e) => {
+    if (e.target.classList.contains('comment-btn')) {
+      const b = e.target.id;
+      doet(b);
+    }
   });
 };
 
