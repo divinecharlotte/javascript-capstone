@@ -1,0 +1,480 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --text-color-1: #f0f9cf;
+  --text-color-2: #23832b;
+  --text-color-3: #9cb445;
+  --bg-color: #f0f9cf;
+  --popup-blur: 20px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+nav .openMenu {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.5rem;
+  margin: 20px;
+  cursor: pointer;
+  color: #236128;
+}
+
+nav .nav-items {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  background: rgba(235, 255, 161, 0.9);
+}
+
+nav .closeMenu {
+  font-size: 1.7rem;
+}
+
+nav .nav-items .closeMenu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.item a {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-link {
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  margin: 0 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: rgb(49, 49, 49);
+  font-weight: 500;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 7px;
+  border-radius: 5px;
+  background-color: var(--text-color-3);
+  bottom: -10px;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--text-color-2);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.tagline h2 {
+  text-align: center;
+  color: var(--text-color-2);
+  font-size: 2.5rem;
+  margin-top: 5%;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-family: "Courgette", cursive;
+}
+
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: auto;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow:
+    rgb(50 50 93 / 25%) 0 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0 3px 7px -3px;
+}
+
+.card-img img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  width: 100%;
+}
+
+.card-info h2,
+#reservationPopup h2 {
+  font-family: "Patrick Hand", cursive;
+  color: var(--text-color-3);
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.card-info ul {
+  display: flex;
+  margin-top: 5%;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.comment-btn,
+.reservation-btn {
+  padding: 3% 7%;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1.3rem;
+  color: var(--text-color-1);
+  background-color: var(--text-color-2);
+  border-radius: 15px;
+  border: 1px solid var(--text-color-2);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.comment-btn:hover,
+.reservation-btn:hover {
+  background-color: #236128;
+}
+
+.like-btn {
+  background: none;
+  border: none;
+  color: var(--text-color-3);
+  font-size: 1.7rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.like-btn .fa-heart {
+  margin-right: 0.75rem;
+}
+
+.comments-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.footer {
+  width: 100%;
+  text-align: center;
+  background-color: #c8e073;
+  padding: 20px;
+}
+
+.footer a {
+  color: #2a7703;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer a:hover {
+  cursor: pointer;
+  font-size: 1.5rem;
+  transform: scale(1.2, 1.2);
+}
+
+body.popup-open {
+  overflow: hidden;
+  z-index: 95;
+}
+
+#blur-bg {
+  z-index: 99;
+}
+
+#reservationPopup {
+  --nav-line-height: 3px;
+  --nav-line-color: rgb(88, 88, 88);
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+  overflow: auto;
+  height: 100%;
+}
+
+#reservationFormErr {
+  color: red;
+}
+
+#reservation__container {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow:
+    rgb(50 50 93 / 25%) 0 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0 3px 7px -3px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#reservation__closeBtn {
+  cursor: pointer;
+  position: relative;
+  width: 50px;
+  height: 43px;
+}
+
+#r__cBtn-lines {
+  position: absolute;
+  top: 12px;
+  width: 80%;
+  height: var(--nav-line-height);
+  background-color: var(--nav-line-color);
+  transform: rotate(45deg);
+}
+
+#r__cBtn-lines::after {
+  content: "";
+  top: 0;
+  transform: rotate(-90deg);
+  position: absolute;
+  width: 100%;
+  height: var(--nav-line-height);
+  background-color: var(--nav-line-color);
+}
+
+#reservation__data-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#reservation__data-content img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+#reservation__data-content h2 {
+  margin-bottom: 10px;
+}
+
+#reservation-p__container {
+  max-width: 90vw;
+
+  /* stylelint-disable-next-line */
+  height: fit-content;
+
+  /* stylelint-disable-next-line */
+  height: -moz-fit-content;
+}
+
+#resPopup--dish-description {
+  display: flex;
+  flex-direction: column;
+}
+
+#resPopup--dish-description .rpdd-item p:first-child {
+  font-weight: bold;
+}
+
+#resPopup--dish-description .rpdd-item {
+  margin-bottom: 1rem;
+}
+
+#resPopup--dish-description a {
+  text-decoration: none;
+  color: var(--text-color-2);
+}
+
+#submit-reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#submit-reservation h3 {
+  margin: 1rem 0;
+}
+
+#submit-reservation button {
+  min-width: 10rem;
+}
+
+.resPopupFormItem input,
+#submit-reservation button {
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.resPopupFormItem input {
+  margin-bottom: 0.7rem;
+  text-align: center;
+  min-width: 17rem;
+}
+
+@media screen and (min-width: 768px) {
+  nav .openMenu {
+    display: none;
+  }
+
+  nav .nav-items .closeMenu {
+    display: none;
+    cursor: pointer;
+  }
+
+  nav .nav-items {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    list-style: none;
+    padding: 2%;
+    background-color: #fff;
+    margin: auto;
+  }
+
+  .item a {
+    font-size: 1rem;
+  }
+
+  .tagline h2 {
+    font-size: 3.5rem;
+  }
+
+  footer {
+    font-size: 1.2rem;
+  }
+
+  #reservation-p__container {
+    max-width: 50vw;
+  }
+
+  #resPopup--dish-description {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #resPopup--dish-description .rpdd-item {
+    margin: 0 1rem;
+    position: relative;
+  }
+
+  #resPopup--dish-description .rpdd-item::after {
+    content: "";
+    position: absolute;
+    border-right: 1px solid #ccc;
+    height: 100%;
+    top: 0;
+    right: 0;
+    margin-right: -1rem;
+  }
+
+  #resPopup--dish-description .rpdd-item:last-of-type::after {
+    content: "";
+    border-right: 0;
+  }
+}
+
+.blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bring {
+  display: block;
+}
+
+.comment-pop {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin: 10% 10% 25% 25%;
+  z-index: 10;
+  background-color: rgb(217, 213, 213);
+  width: 50%;
+  gap: 0.75rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.x {
+  margin-left: 87%;
+  width: 30px;
+  margin-top: 6%;
+  background-color: red;
+}
+
+.comments {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.coImage {
+  width: 70%;
+  margin-top: 1.875rem;
+  border-radius: 5%;
+}
