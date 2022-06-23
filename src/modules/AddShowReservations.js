@@ -73,10 +73,10 @@ class AddShowReservations {
   }
 
   invalidFormData = (form) => {
-    if (!document.getElementById('reservationFormErr'))
-      form.insertAdjacentHTML('afterend', `
-      <div id="reservationFormErr">Invalid values</div>
+    if (!document.getElementById('reservationFormErr')) {
+      form.insertAdjacentHTML('afterend', `<div id="reservationFormErr">Invalid values</div>
       `);
+    }
   };
 
   async sendData({
