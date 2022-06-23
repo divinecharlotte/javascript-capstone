@@ -31,7 +31,7 @@ const displayCards = async () => {
                      
                    </ul>
                    <ul>
-                   <li><button class='comment-btn reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
+                   <li><button class='reservation-btn' data-name='${meal.strMeal}' type='button'>Reservations</button></li>
                    </ul>
                   
                </div>
