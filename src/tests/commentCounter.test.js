@@ -2,12 +2,13 @@
  * @jest-environment jsdom
  */
 
-import commentCounter from '../modules/itemsCounter.js';
+import commentCounter from '../modules/commentCounter.js';
 
 describe('add remove functionality', () => {
   document.body.innerHTML = `
-    <span id='reservations-counter'></span>
-      `;
+ 
+     <span class='comment-pop'>test</span>
+       `;
 
   beforeEach(() => {
     global.fetch = jest.fn(() => Promise.resolve({
@@ -29,11 +30,15 @@ describe('add remove functionality', () => {
         },
       ]),
     }));
+    commentCounter.melsname = document.getElementById('reservations-counter');
+    // console.log(document.querySelector('.comment-pop').textContent);
+    commentCounter.counternum = 'test';
   });
 
   describe('Check counter function', () => {
     it('Count fetch response', async () => {
       const count = await commentCounter('test');
+      console.log(count);
       expect(count).toHaveLength(3);
     });
   });
