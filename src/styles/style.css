@@ -414,9 +414,7 @@ body.popup-open {
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 10% 10% 25% 25%;
   z-index: 10;
   background-color: rgb(217, 213, 213);
   width: 50%;
@@ -431,7 +429,7 @@ form {
 }
 
 .x {
-  margin-left: 90%;
+  margin-left: 87%;
   width: 30px;
   margin-top: 6%;
   background-color: red;
@@ -443,8 +441,7 @@ form {
 }
 
 .coImage {
-  height: 350px;
-  width: 25rem;
+  width: 70%;
   margin-top: 1.875rem;
   border-radius: 5%;
 }
