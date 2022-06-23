@@ -62,6 +62,7 @@ class Reservations {
     </div>
     `;
     html += this.AddShowRes.renderForm();
+<<<<<<< Updated upstream
     this.AddShowRes.getReservations(area);
     popup.insertAdjacentHTML('afterbegin', html);
 
@@ -73,6 +74,9 @@ class Reservations {
       // console.log(formData.get('name'));
       this.AddShowRes.submitForm(formData, e.target, area);
     });
+=======
+    popup.insertAdjacentHTML('afterbegin', html);
+>>>>>>> Stashed changes
   }
 
   openPopup = (e) => {
