@@ -73,9 +73,9 @@ const doet = (b) => {
         <p class='comment'>${Comment.value}</p>
         </div>`,
           );
+          data.length += 1;
           const mealnames = document.querySelector('.comment-length');
           mealnames.innerHTML = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
-          data.length += 1;
           Username.value = '';
           Comment.value = '';
         }
