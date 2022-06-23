@@ -250,6 +250,10 @@ body.popup-open {
   height: 100%;
 }
 
+#reservationFormErr {
+  color: red;
+}
+
 #reservation__container {
   padding: 20px;
   border-radius: 20px;
@@ -455,7 +459,6 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
-  margin-bottom: 2.5rem;
 }
 
 .x {

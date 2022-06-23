@@ -70,8 +70,10 @@ class Reservations {
     const form = document.getElementById('submit-reservation');
     form.addEventListener('submit', (e) => {
       const formData = new FormData(e.target);
+
       e.preventDefault();
       this.AddShowRes.submitForm(formData, e.target, id);
+      form.reset();
     });
   }
 
