@@ -52,7 +52,6 @@ class AddShowReservations {
       const data = await response.json();
       counter.textContent = `(${data.length})`;
       return data;
-
     } catch (e) {
       return null;
     }

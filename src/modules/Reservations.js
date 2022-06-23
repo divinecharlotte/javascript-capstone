@@ -14,6 +14,7 @@ class Reservations {
     } catch (e) {
       return null;
     }
+    return 1;
   }
 
   removePopup = () => {
