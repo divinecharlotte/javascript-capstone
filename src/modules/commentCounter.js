@@ -4,14 +4,13 @@ export default async function commentCounter(b) {
 
   try {
     const response = await fetch(`${apicom}?item_id=item${b}`, { method: 'get' });
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    } else {
-      const data = await response.json();
-      const counternum = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
-      melsname.insertAdjacentHTML('beforeend', counternum);
-    }
+    const data = await response.json();
+    const counternum = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
+    console.log(data.length);
+    melsname.insertAdjacentHTML('beforeend', counternum);
+    return data;
   } catch (e) {
+    console.log(e);
     throw Error(e);
   }
 }
