@@ -9,6 +9,11 @@ Build using Test Driven Development with Jest Framework.
 - Webpack
 
 ## Screenshot
+<img src="https://user-images.githubusercontent.com/59011105/175324086-5d1f1293-828d-4905-9328-41a69a09397f.png" width=50%>
+
+<img src="https://user-images.githubusercontent.com/59011105/175324226-b2c15f5d-24fa-43dc-889d-15e4e11046c5.png" width=50%>
+
+<img src="https://user-images.githubusercontent.com/59011105/175324739-4cfbe783-3a44-4385-b55c-e4fcc5636638.png" width=50%>
 
 ## LIVE DEMO
 
