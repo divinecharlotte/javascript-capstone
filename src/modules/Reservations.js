@@ -12,7 +12,7 @@ class Reservations {
       const data = await response.json();
       this.renderPopup(data);
     } catch (e) {
-      console.error(`Error: ${e}`);
+      return null;
     }
   }
 
@@ -96,7 +96,6 @@ class Reservations {
   init = () => {
     const reservationBtn = document.querySelectorAll('.reservation-btn');
 
-    document.querySelector('.reservation-btn').click();
     reservationBtn.forEach((el) => {
       el.addEventListener('click', this.openPopup);
     });
