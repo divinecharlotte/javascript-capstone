@@ -1,3 +1,4 @@
+import { doet } from './comment.js';
 import { getLikes, likeInteraction } from './nOfLikes.js';
 import itemsCounter from './itemsCounter.js';
 import Reservations from './Reservations.js';
@@ -36,6 +37,12 @@ const displayCards = async () => {
                </div>
              </div>`;
     recipeCards.innerHTML = html;
+  });
+  recipeCards.addEventListener('click', (e) => {
+    if (e.target.classList.contains('comment-btn')) {
+      const b = e.target.id;
+      doet(b);
+    }
   });
   getLikes();
   likeInteraction();
