@@ -1,6 +1,6 @@
-const itemsCounter = (data, link) => {
-  link.innerHTML = `Home(${data})`;
-  return data;
+const itemsCounter = (counter, link) => {
+  link.innerHTML = `Home(${counter})`;
+  return counter;
 };
 
 export default itemsCounter;
