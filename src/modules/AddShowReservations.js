@@ -10,13 +10,13 @@ class AddShowReservations {
   renderForm = () => `<form id='submit-reservation'>
       <h3>Add a reservation</h3>
       <div class="resPopupFormItem">
-        <input type='text' name="name" placeholder='Your name'>
+        <input type='text' required name="name" placeholder='Your name'>
       </div>
       <div class="resPopupFormItem">
-        <input type='text' name="res-popup-start-date" placeholder='Start date' onfocus="(this.type = 'date')">
+        <input type='text' required name="res-popup-start-date" placeholder='Start date' onfocus="(this.type = 'date')">
       </div>
       <div class="resPopupFormItem">
-        <input type='text' name="res-popup-end-date" placeholder='End date' onfocus="(this.type = 'date')">
+        <input type='text' required name="res-popup-end-date" placeholder='End date' onfocus="(this.type = 'date')">
       </div>
       <button type='submit'>Reserve</button>
     </form>
@@ -73,9 +73,10 @@ class AddShowReservations {
   }
 
   invalidFormData = (form) => {
-    form.insertAdjacentHTML('afterend', `
-      <div id="reservationFormErr">Invalid values</div>
+    if (!document.getElementById('reservationFormErr')) {
+      form.insertAdjacentHTML('afterend', `<div id="reservationFormErr">Invalid values</div>
       `);
+    }
   };
 
   async sendData({
