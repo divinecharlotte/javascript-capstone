@@ -34,6 +34,7 @@ class Reservations {
   renderPopup(data) {
     const res = data.meals[0];
 
+    const id = res.idMeal;
     const thumb = res.strMealThumb;
     const name = res.strMeal;
     const category = res.strCategory;
@@ -62,7 +63,7 @@ class Reservations {
     </div>
     `;
     html += this.AddShowRes.renderForm();
-    this.AddShowRes.getReservations(area);
+    this.AddShowRes.getReservations(id);
     popup.insertAdjacentHTML('afterbegin', html);
 
     const form = document.getElementById('submit-reservation');
@@ -71,7 +72,7 @@ class Reservations {
       const formData = new FormData(e.target);
       e.preventDefault();
       // console.log(formData.get('name'));
-      this.AddShowRes.submitForm(formData, e.target, area);
+      this.AddShowRes.submitForm(formData, e.target, id);
     });
   }
 
