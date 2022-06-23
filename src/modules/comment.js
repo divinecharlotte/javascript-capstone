@@ -52,30 +52,33 @@ const doet = (b) => {
           comment: Comment.value,
         };
 
-        fetch(`${apicom}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(inputComment),
-        }).then((res) => {
-          console.log(res.json());
-        });
-        const comment = document.querySelector('.comments');
-        comment.insertAdjacentHTML(
-          'beforebegin',
-          `<div class='comments'>
+        if (Username.value === '' || Comment.value === '') {
+          alert('Add comment');
+        } else {
+          fetch(`${apicom}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(inputComment),
+          }).then((res) => {
+            console.log(res.json());
+          });
+          const comment = document.querySelector('.comments');
+          comment.insertAdjacentHTML(
+            'beforebegin',
+            `<div class='comments'>
         <p class='creation_date0'>2022-06-22</p>
         <p class='username'>${Username.value}</p>
         <p class='comment'>${Comment.value}</p>
         </div>`,
-        );
-        data.length += 1;
-        const mealnames = document.querySelector('.comment-length');
-        mealnames.innerHTML = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
-        data.length += 1;
-        Username.value = '';
-        Comment.value = '';
+          );
+          const mealnames = document.querySelector('.comment-length');
+          mealnames.innerHTML = `<h2 class= 'comment-length'>Comments(${data.length})</h2>`;
+          data.length += 1;
+          Username.value = '';
+          Comment.value = '';
+        }
       });
     });
 };
