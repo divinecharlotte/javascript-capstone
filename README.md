@@ -17,7 +17,7 @@ Build using Test Driven Development with Jest Framework.
 
 ## LIVE DEMO
 
-[live demo link](TODO)
+[live demo link](https://divinecharlotte.github.io/javascript-capstone/)
 
 ## Project documentation
 
