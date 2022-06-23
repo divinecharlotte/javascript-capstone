@@ -330,6 +330,36 @@ body.popup-open {
   color: var(--text-color-2);
 }
 
+#submit-reservation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#submit-reservation h3 {
+  margin: 1rem 0;
+}
+
+#submit-reservation button {
+  min-width: 10rem;
+}
+
+.resPopupFormItem input,
+#submit-reservation button {
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.resPopupFormItem input {
+  margin-bottom: 0.7rem;
+  text-align: center;
+  min-width: 17rem;
+}
+
+
+
 @media screen and (min-width: 768px) {
   nav .openMenu {
     display: none;

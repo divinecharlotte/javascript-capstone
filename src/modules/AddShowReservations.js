@@ -31,21 +31,50 @@ class AddShowReservations {
         <input type='text' name="res-popup-end-date" placeholder='End date' onfocus="(this.type = 'date')">
       </div>
       <button type='submit'>Reserve</button>
-    </form>`;
+    </form>
+    <h3 class='reservations-list-header'>
+      Reservations
+      <span id="reservations-counter"></span>
+    </h3>
+    <div id='reservations-list'>
+      </div>
+    `;
   };
 
   renderReservations = (data) => {
-    const popup = document.getElementById('reservation__data-content');
-    let html = "";
+    const list = document.getElementById('reservations-list');
+    let html = `
+    `;
 
     data.reverse().forEach((el) => {
       html += `
-        ${el.username}<br>${el.date_start} <br>${el.date_end}<hr>
-      `;
-    });
+      <div class="reservation-list-item">
+        <strong>${el.date_start}</strong> - <strong>${el.date_end}</strong> by <strong>${el.username}</strong>
+      </div>
+        `
 
-    popup.insertAdjacentHTML('beforeend', html);
+        ;
+    });
+    list.insertAdjacentHTML('afterbegin', html);
+
   };
+
+  async reservationsCounter(id) {
+    const counter = document.getElementById('reservations-counter');
+
+    try {
+      const response = await fetch(`${this.link}?item_id=${id}`, { method: 'get' });
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      } else {
+        const data = await response.json();
+        counter.textContent = `(${data.length})`;
+
+      }
+    } catch (e) {
+      console.error(`Error: ${e}`);
+    }
+  }
 
   async getReservations(id) {
     try {
@@ -55,7 +84,8 @@ class AddShowReservations {
       } else {
         const data = await response.json();
         this.renderReservations(data);
-        console.log(data);
+        this.reservationsCounter(id);
+
       }
     } catch (e) {
       console.error(`Error: ${e}`);
@@ -90,6 +120,7 @@ class AddShowReservations {
       if (response.status === 201) {
         console.log('Good response!');
         this.renderReservations([dataJson]);
+        this.reservationsCounter(id);
       } else {
         throw Error('BAD!');
       }
