@@ -19,6 +19,10 @@ Build using Test Driven Development with Jest Framework.
 
 [live demo link](TODO)
 
+## Project documentation
+
+[Video](https://drive.google.com/file/d/1T_B8dzL3QMgRhWRol4ootSXk7mM54ln1/view?usp=sharing)
+
 ## Getting Started
 
 To build run in your terminal:
